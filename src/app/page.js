@@ -10,7 +10,7 @@ export default async function Home({ searchParams }) {
       Authorization: `Bearer ${API_ACCESS_TOKEN_AUTH}`
     }
   };
-  
+
   const response = await fetch(`https://api.themoviedb.org/3/${genre === "fetchTopRated" ? 'movie/top_rated' : 'trending/movie/week'}?language=en-US&page=1`, options, { next: { revalidate: 10000 } });
   if(!response.ok){
     throw new Error("Failed to fetch data");
